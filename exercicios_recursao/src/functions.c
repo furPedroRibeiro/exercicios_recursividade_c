@@ -25,6 +25,21 @@ int soma_naturais(int n){
     return result + n;
 }
 
+void pixels_imagem(int** m, const int rows, const int cols, int count_line){
+    int **matriz = m;
+    int **end_rows_after = m;
+    int *end_cols_after = *end_rows_after;
+
+    if(count_line < rows){
+        matriz++;
+        count_line++;
+        pixels_imagem(matriz, rows, cols, count_line);
+    }
+    for(int i = 0; i < cols; i++){
+        end_cols_after[i] = 255 - end_cols_after[i];
+    }
+}
+
 void show_complexidade(){
-    printf("\nOperacoes soma de inteiros: %i" ,count_operations_soma_naturais);
+    printf("\nOperacoes soma de inteiros: %d" ,count_operations_soma_naturais);
 }
