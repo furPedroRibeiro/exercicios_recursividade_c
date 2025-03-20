@@ -76,6 +76,8 @@ int main()
     //Espaço destinado a terceira função -> intercalar elementos de um vetor
     puts("\n\n\n---- FUNCAO INTERCALAR ELEMENTOS DO VETOR ----");
 
+    puts("Testando submodule");
+
     int size_vec_1, size_vec_2;
 
     printf("\n Digite o tamanho do vetor 1: ");
