@@ -40,6 +40,29 @@ void pixels_imagem(int** m, const int rows, const int cols, int count_line){
     }
 }
 
+int intercalar_elementos(int *v1, int *v2, int *v3, int size_vec_1, int size_vec_2, int size_vec_3){
+    if((size_vec_1-size_vec_2) != 0 && (size_vec_1-size_vec_2) > 0){
+        size_vec_3 = intercalar_elementos(v1, v2, v3, (size_vec_1-1), size_vec_2, size_vec_3);
+        v3[size_vec_3] = v1[size_vec_1];
+        return size_vec_3+1;
+    } else if((size_vec_2-size_vec_1) != 0 && (size_vec_2-size_vec_1) > 0){
+        size_vec_3 = intercalar_elementos(v1, v2, v3, size_vec_1, size_vec_2-1, size_vec_3);
+        v3[size_vec_3] = v2[size_vec_2];
+        return size_vec_3+1;
+    } else if(size_vec_1 != 0){
+        size_vec_3 = intercalar_elementos(v1, v2, v3, (size_vec_1-1), (size_vec_2-1), size_vec_3);
+        v3[size_vec_3] = v1[size_vec_1];
+        v3[size_vec_3+1] = v2[size_vec_2];
+        return size_vec_3 + 2;
+    } else if(size_vec_1 == 0){
+        size_vec_3 = 0;
+        v3[size_vec_3] = v1[size_vec_1];
+        v3[size_vec_3+1] = v2[size_vec_2];
+        return 2;
+    }
+    return 0;
+}
+
 void show_complexidade(){
     printf("\nOperacoes soma de inteiros: %d" ,count_operations_soma_naturais);
 }
